@@ -57,7 +57,7 @@ abline(h = 72)  # Mean line
 # ----------------------------------
 frequency.dist.ungrouped(fans$cfm) # Frequency table for raw data
 # Grouped version requires castings dataset
-# frequency.dist.grouped(castings$weight)
+frequency.dist.grouped(castings$weight)
 
 # ----------------------------------
 # 3. Frequency Polygon & Histogram
@@ -67,8 +67,8 @@ frequency.polygon.ungrouped(fans$cfm,
                             xlab = "CFM")
 
 # Grouped versions require a grouped numeric dataset
-# frequency.polygon.grouped(castings$weight, ...)
-# hist.grouped(castings$weight, ...)
+frequency.polygon.grouped(castings$weight, ...)
+hist.grouped(castings$weight, ...)
 
 hist.ungrouped(fans$cfm, main = "Ungrouped Histogram", xlab = "CFM")
 
@@ -76,19 +76,19 @@ hist.ungrouped(fans$cfm, main = "Ungrouped Histogram", xlab = "CFM")
 # 4. Density Plots
 # ----------------------------------
 # Density curve and overlay
-# hist.grouped(castings$weight, freq = FALSE)
-# lines(density(castings$weight))
+hist.grouped(castings$weight, freq = FALSE)
+lines(density(castings$weight))
 
-# dp <- density(castings$weight)
-# plot(dp)
-# polygon(dp, col = "red", border = "black")
+dp <- density(castings$weight)
+plot(dp)
+polygon(dp, col = "red", border = "black")
 
 # ----------------------------------
 # 5. Summary Statistics
 # ----------------------------------
-# summary(castings$weight)
-# boxplot(castings$weight, main = "Boxplot of Casting Weight")
-# boxplot(weight ~ mold, data = castings3)
+summary(castings$weight)
+boxplot(castings$weight, main = "Boxplot of Casting Weight")
+boxplot(weight ~ mold, data = castings3)
 
 # ----------------------------------
 # 6. Measures of Central Tendency
@@ -130,10 +130,10 @@ quantile(preform$weight, probs = c(0.25, 0.75))
 # ----------------------------------
 # 9. Weighted Mean (Grouped Data)
 # ----------------------------------
-# fdcast <- frequency.dist.grouped(castings$weight)
-# midpts <- fdcast$midpoint
-# freq <- fdcast$freq
-# weighted.mean(x = midpts, w = freq)
+fdcast <- frequency.dist.grouped(castings$weight)
+midpts <- fdcast$midpoint
+freq <- fdcast$freq
+weighted.mean(x = midpts, w = freq)
 
 # Simple weighted mean example
 wt <- c(0.2, 0.4, 0.4)
@@ -143,28 +143,28 @@ weighted.mean(x = x, w = wt)
 # ----------------------------------
 # 10. Skewness and Kurtosis
 # ----------------------------------
-# skewness(castings$weight)
-# ro(skewness(castings$weight), 3)
+skewness(castings$weight)
+ro(skewness(castings$weight), 3)
 
-# kurtosis(castings$weight)
-# ro(kurtosis(castings$weight), 3)
+kurtosis(castings$weight)
+ro(kurtosis(castings$weight), 3)
 
 # ----------------------------------
 # 11. Descriptive Summary
 # ----------------------------------
-# summary.continuous(castings$weight, stat.sd = TRUE)
-# nqtr <- function(x, d) { noquote(t(ro(x, d))) }
-# nqtr(summary.continuous(castings$weight), 3)
+summary.continuous(castings$weight, stat.sd = TRUE)
+nqtr <- function(x, d) { noquote(t(ro(x, d))) }
+nqtr(summary.continuous(castings$weight), 3)
 
 # ----------------------------------
 # 12. Data Transformation and Correlation
 # ----------------------------------
-# castnew <- transform.independent.format.to.dependent.format(fx = weight ~ mold, data = castings3)
-# colnames(castnew)[1:3] <- c("Mold_1", "Mold_2", "Mold_3")
-# cor(castnew$Mold_1, castnew$Mold_2)
+castnew <- transform.independent.format.to.dependent.format(fx = weight ~ mold, data = castings3)
+colnames(castnew)[1:3] <- c("Mold_1", "Mold_2", "Mold_3")
+cor(castnew$Mold_1, castnew$Mold_2)
 
-# plot(castnew$Mold_1, castnew$Mold_2, pch = 19, xlab = "Mold 2", ylab = "Mold 1")
-# abline(lm(castnew$Mold_2 ~ castnew$Mold_1), col = "blue", lwd = 2)
+plot(castnew$Mold_1, castnew$Mold_2, pch = 19, xlab = "Mold 2", ylab = "Mold 1")
+abline(lm(castnew$Mold_2 ~ castnew$Mold_1), col = "blue", lwd = 2)
 ```
 
 ---
